@@ -1,0 +1,86 @@
+<html>
+<head></head>
+<body LEFTMARGIN="0" TOPMARGIN="0" FRAMEBORDER="0">
+<table width="99%" height="100%" border="1" cellpadding="1" cellspacing="1">
+<tr>
+      <td bordercolor="#3D0327" bgcolor="#6ba6de">
+		    <span style="position:absolute;top:100;left:35;width:259px; height:15px; border:1 #707888 solid;overflow:hidden">
+				<span style="position:absolute;top:-1;left:0" id="pimg">
+				</span>
+			</span><br>&nbsp;&nbsp;&nbsp;&nbsp;
+			<span  style="position:absolute;top:60;left:80;width:259px; height:17px;font-size:13pt;color:#f4f4f4" id="abc">
+			</span>
+</td>
+    </tr>
+  </table></body></html>
+  <script>
+s=new Array();
+s[0]="#050626";
+s[1]="#0a0b44";
+s[2]="#0f1165";
+s[3]="#1a1d95";
+s[4]="#1c1fa7";
+s[5]="#1c20c8";
+s[6]="#060cff";
+s[7]="#2963f8";
+function ls(){
+		pimg.innerHTML="";
+		for(i=0;i<9;i++){
+		pimg.innerHTML+="<input style=\"width:15;height:10;border:0;background:"+s[i]+";margin:1\">";
+		}
+	}
+	
+function rs(){
+		pimg.innerHTML="";
+		for(i=9;i>-1;i--){
+		pimg.innerHTML+="<input style=\"width:15;height:10;border:0;background:"+s[i]+";margin:1\">";
+		}
+	}
+var g=0;sped=0;
+function str(){
+	if(pimg.style.pixelLeft<350&&g==0){
+	if(sped==0){
+		ls();
+		sped=1;
+		}
+	pimg.style.pixelLeft+=2;
+	setTimeout("str()",1);
+	return;
+	}
+	g=1;
+	if(pimg.style.pixelLeft>-200&&g==1){
+	if(sped==1){
+		rs();
+		sped=0;
+		}
+	pimg.style.pixelLeft-=2;
+	setTimeout("str()",1);
+	return;
+	}
+	g=0;
+	str();
+}
+
+function flashs(){
+if(abc.style.color=="#ffffff"){
+	abc.style.color="#707888";
+	setTimeout('flashs()',500);
+	}
+else{
+	abc.style.color="#ffffff";
+	setTimeout('flashs()',500);
+	}
+}
+function flashs(){
+if(abc.style.color=="#ffffff"){
+	abc.style.color="#707888";
+	setTimeout('flashs()',500);
+	}
+else{
+	abc.style.color="#ffffff";
+	setTimeout('flashs()',500);
+	}
+}
+flashs();
+str();
+</script>

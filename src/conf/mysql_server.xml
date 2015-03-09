@@ -1,0 +1,50 @@
+<!-- AutoID Middleware Server Configuration File for MySQL -->
+
+<Server port="8006" shutdown="SHUTDOWN">
+
+<!-- Comment these entries out to disable JMX MBeans support used for the
+         administration web application -->
+    <Listener className="org.apache.catalina.mbeans.ServerLifecycleListener"/>
+    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+
+    <!-- Global JNDI resources -->
+    <GlobalNamingResources>
+
+    </GlobalNamingResources>
+
+    <!-- Define the Tomcat Stand-Alone Service -->
+    <Service name="Catalina">
+
+        <Connector
+            port="8080" maxThreads="500" minSpareThreads="25" maxSpareThreads="75"
+            enableLookups="false" acceptCount="100"
+            debug="0" connectionTimeout="20000"
+            disableUploadTimeout="true"/>
+
+        <!-- Define the top level container in our container hierarchy -->
+        <Engine name="Catalina" defaultHost="localhost">
+
+             <Host name="localhost" appBase="webapps"
+                  unpackWARs="true" autoDeploy="true"
+                  xmlValidation="false" xmlNamespaceAware="false">
+
+                <Context path="/middleware" docBase="middleware" debug="5" reloadable="true" crossContext="true">
+                    <Resource name="jdbc/middlewareDB" auth="Container" type="javax.sql.DataSource"
+                              maxActive="100" maxIdle="30" maxWait="10000"
+                              username="root" password="123456" driverClassName="com.mysql.jdbc.Driver"
+                              url="jdbc:mysql://localhost/middleware?autoReconnect=true"/>
+                   
+                    <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
+							dataSourceName="jdbc/middlewareDB"
+							localDataSource="true"
+							userTable="users" userNameCol="userName" userCredCol="passwd"
+							userRoleTable="roles" roleNameCol="roleType" />      
+                </Context>
+
+            </Host>
+
+        </Engine>
+
+    </Service>
+
+</Server>

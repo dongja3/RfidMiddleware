@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+    "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+    <form-beans>
+        <form-bean name="ChangePasswordForm" type="com.ubipass.middleware.web.form.ChangePasswordForm"/>
+        <form-bean name="SaveDeviceGroupsForm" type="com.ubipass.middleware.web.form.SaveDeviceGroupsForm"/>
+        <form-bean name="DeleteDeviceGroupsForm" type="com.ubipass.middleware.web.form.DeleteDeviceGroupsForm"/>
+        <form-bean name="SaveDevicesForm" type="com.ubipass.middleware.web.form.SaveDevicesForm"/>
+        <form-bean name="DeleteDevicesForm" type="com.ubipass.middleware.web.form.DeleteDevicesForm"/>
+        <form-bean name="SaveSysConfigForm" type="com.ubipass.middleware.web.form.SaveSysConfigForm"/>
+        <form-bean name="SaveHttpCommandReplyAction" type="com.ubipass.middleware.web.form.HttpCommandInterfaceForm"/>
+        <form-bean name="DeleteHttpCommandReplyForm" type="com.ubipass.middleware.web.form.DeleteHttpCommandReplyForm"/>
+        <form-bean name="SaveLicenceKeyForm" type="com.ubipass.middleware.web.form.SaveLicenceKeyForm"/>
+        <form-bean name="SaveTaskForm" type="com.ubipass.middleware.web.form.SaveTaskForm"/>
+        <form-bean name="SaveUserForm" type="com.ubipass.middleware.web.form.SaveUserForm"/>
+        <form-bean name="DeleteListUserForm" type="com.ubipass.middleware.web.form.DeleteListUserForm"/>
+        <form-bean name="DeleteTaskForm" type="com.ubipass.middleware.web.form.DeleteTaskForm"/>
+        <form-bean name="TagPrintForm" type="com.ubipass.middleware.web.form.TagPrintForm"/>
+    </form-beans>
+
+    <global-exceptions>
+
+        <exception
+            handler="org.apache.struts.action.ExceptionHandler"
+            key="error.detail"
+            path="/error.jsp"
+            scope="request"
+            type="java.lang.Exception"/>
+
+    </global-exceptions>
+
+    <action-mappings>
+
+        <!-- Change password for system User -->
+        <action name="ChangePasswordForm"
+            path="/ChangePasswordAction"
+            type="com.ubipass.middleware.web.action.ChangePasswordAction">
+            <forward name="success" path="/users/ChangePwd.jsp"/>
+            <forward name="failure" path="/users/ChangePwd.jsp"/>
+        </action>
+
+        <!-- Log out of the application -->
+        <action path="/LogOutAction"
+            type="com.ubipass.middleware.web.action.LogOutAction">
+            <forward name="logout" path="/logout.jsp" redirect="true"/>
+            <forward name="externalLogin" path="/index.jsp?loginError=true" redirect="true"/>
+        </action>
+
+        <!-- Reader List of the application -->
+        <action path="/ListDeviceGroupsAction"
+            type="com.ubipass.middleware.web.action.ListDeviceGroupsAction">
+            <forward name="List" path="/reader/ListDeviceGroups.jsp"/>
+            <forward name="Delete" path="/reader/DeleteDeviceGroup.jsp"/>
+        </action>
+
+        <!-- create reader group of the application -->
+        <action path="/AddDeviceGroup"
+            type="com.ubipass.middleware.web.action.AddDeviceGroupAction">
+            <forward name="Create" path="/reader/AddDeviceGroup.jsp"/>
+            <forward name="Edit" path="/reader/EditDeviceGroup.jsp"/>
+            <forward name="failure" path="/ListDeviceGroupsAction.do"/>
+        </action>
+
+        <!-- modify and create reader group of the application -->
+        <action name="SaveDeviceGroupsForm"
+            scope="request"
+            path="/SaveDeviceGroupsAction"
+            type="com.ubipass.middleware.web.action.SaveDeviceGroupsAction">
+            <forward name="Save" path="/ListDeviceGroupsAction.do" redirect="true"/>
+            <forward name="Create" path="/AddDeviceGroup.do"/>
+            <forward name="Edit" path="/reader/EditDeviceGroup.jsp"/>
+        </action>
+
+        <!-- delete reader group of the application -->
+        <action name="DeleteDeviceGroupsForm"
+            path="/DeleteDeviceGroupsAction"
+            type="com.ubipass.middleware.web.action.DeleteDeviceGroupsAction">
+            <forward name="successful" path="/ListDeviceGroupsAction.do?userOperation=delete" redirect="true"/>
+            <forward name="failure" path="/ListDeviceGroupsAction.do?userOperation=delete"/>
+        </action>
+
+        <!-- List Devices of the application -->
+        <action path="/ListDevicesAction"
+            type="com.ubipass.middleware.web.action.ListDevicesAction" scope="request">
+            <forward name="List" path="/reader/ListDevices.jsp"/>
+            <forward name="Delete" path="/reader/DeleteDevices.jsp"/>
+        </action>
+
+        <action path="/AddDeviceAction"
+            type="com.ubipass.middleware.web.action.AddDeviceAction">
+            <forward name="Create" path="/reader/addDevices.jsp"/>
+            <forward name="Edit" path="/reader/EditDevices.jsp"/>
+            <forward name="failure" path="/ListDevicesAction.do"/>
+        </action>
+
+        <action name="SaveDevicesForm"
+            scope="request"
+            path="/SaveDevicesAction"
+            type="com.ubipass.middleware.web.action.SaveDevicesAction">
+            <forward name="List" path="/ListDevicesAction.do" redirect="true"/>
+            <forward name="Create" path="/AddDeviceAction.do"/>
+            <forward name="Edit" path="/reader/EditDevices.jsp"/>
+        </action>
+
+        <!-- delete reader of the application -->
+        <action name="DeleteDevicesForm"
+            path="/DeleteDevicesAction"
+            type="com.ubipass.middleware.web.action.DeleteDevicesAction">
+            <forward name="Successful" path="/ListDevicesAction.do?userOperation=delete" redirect="true"/>
+            <forward name="Failure" path="/ListDevicesAction.do?userOperation=delete"/>
+        </action>
+
+        <!-- Manage all Devices status -->
+        <action path="/ExecuteDevice"
+            type="com.ubipass.middleware.web.action.ExecuteDeviceAction">
+            <forward name="List" path="/ListDevicesAction.do" redirect="true"/>
+        </action>
+
+        <!-- Config middleware server -->
+        <action path="/SysConfigAction"
+            type="com.ubipass.middleware.web.action.SysConfigAction">
+            <forward name="Successful" path="/sysconfig/SysConfig.jsp"/>
+        </action>
+
+        <action name="SaveSysConfigForm"
+            scope="request"
+            path="/SaveSysConfigAction"
+            type="com.ubipass.middleware.web.action.SaveSysConfigAction">
+            <forward name="Successful" path="/SysConfigAction.do" redirect="true"/>
+        </action>
+
+        <!-- Config HttpCommandReply -->
+        <action path="/ListHttpCommandReplyAction"
+            type="com.ubipass.middleware.web.action.ListHttpCommandInterfaceAction">
+            <forward name="List" path="/sysconfig/HttpCommandConfig.jsp"/>
+            <forward name="Delete" path="/sysconfig/DeleteHttpCommandConfig.jsp"/>
+        </action>
+
+        <action path="/AddHttpCommandReplyAction"
+            type="com.ubipass.middleware.web.action.AddHttpCommandInterfaceAction">
+            <forward name="Create" path="/sysconfig/AddHttpCommandConfig.jsp"/>
+            <forward name="Edit" path="/sysconfig/EditHttpCommandConfig.jsp"/>
+            <forward name="failure" path="/ListHttpCommandReplyAction.do"/>
+        </action>
+
+        <action name="SaveHttpCommandReplyAction"
+            scope="request"
+            path="/SaveHttpCommandReplyAction"
+            type="com.ubipass.middleware.web.action.SaveHttpCommandInterfaceAction">
+            <forward name="List" path="/ListHttpCommandReplyAction.do" redirect="true"/>
+            <forward name="Create" path="/AddHttpCommandReplyAction.do"/>
+            <forward name="Edit" path="/sysconfig/EditHttpCommandConfig.jsp"/>
+        </action>
+
+        <action name="DeleteHttpCommandReplyForm"
+            path="/DeleteHttpCommandReplyAction"
+            type="com.ubipass.middleware.web.action.DeleteHttpCommandInterfaceAction">
+            <forward name="Successful" path="/ListHttpCommandReplyAction.do?userOperation=delete" redirect="true"/>
+        </action>
+
+        <!-- Licence Management configruation -->
+        <action path="/LicenceMgt"
+            type="com.ubipass.middleware.web.action.LicenceMgtAction">
+            <forward name="Successful" path="/sysconfig/LicenceMgt.jsp"/>
+        </action>
+
+        <action name="SaveLicenceKeyForm"
+            scope="request"
+            path="/SaveLicenceMgtAction"
+            type="com.ubipass.middleware.web.action.SaveLicenceMgtAction">
+            <forward name="Successful" path="/LicenceMgt.do" redirect="true"/>
+        </action>
+
+        <!-- Monitor Devices -->
+        <action path="/MonitorDeviceAction"
+            type="com.ubipass.middleware.web.action.MonitorDeviceAction">
+            <forward name="startMonitor" path="/reader/MonitorDevice.jsp"/>
+        </action>
+
+        <!-- tag ID packing -->
+        <action path="/PackageAction"
+            type="com.ubipass.middleware.web.action.PackageAction">
+            <forward name="List" path="/tag/TagList.jsp"/>
+            <forward name="NoRunDevice" path="/tag/CloseWindow.jsp"/>
+        </action>
+
+        <action path="/SavePackageAction"
+            scope="request"
+            type="com.ubipass.middleware.web.action.SavePackageAction">
+            <forward name="Successful" path="/tag/packInfo.jsp"/>
+        </action>
+
+        <action path="/ViewEPCAction"
+            type="com.ubipass.middleware.web.action.ViewEPCAction">
+            <forward name="List" path="/reader/ViewEPC.jsp"/>
+        </action>
+
+        <!--TaskAction-->
+        <action path="/ListTaskAction"
+            type="com.ubipass.middleware.web.action.ListTasksAction">
+            <forward name="List" path="/task/TaskList.jsp"/>
+            <forward name="Delete" path="/task/TaskDelete.jsp"/>
+        </action>
+
+        <action path="/EditTaskAction"
+            scope="request"
+            type="com.ubipass.middleware.web.action.EditTaskAction">
+            <forward name="Edit" path="/task/TaskEdit.jsp"/>
+            <forward name="Add" path="/task/TaskAdd.jsp"/>
+            <forward name="failure" path="/ListTaskAction.do"/>
+        </action>
+
+        <action path="/DeleteTaskAction"
+            scope="request"
+            name="DeleteTaskForm"
+            type="com.ubipass.middleware.web.action.DeleteTaskAction">
+            <forward name="Delete" path="/ListTaskAction.do?operation=delete" redirect="true"/>
+        </action>
+
+        <action path="/SaveTaskAction"
+            name="SaveTaskForm"
+            scope="request"
+            type="com.ubipass.middleware.web.action.SaveTaskAction">
+            <forward name="success" path="/ListTaskAction.do" redirect="true"/>
+            <forward name="Create" path="/EditTaskAction.do?action=create"/>
+        </action>
+
+        <!--UserAction-->
+        <action path="/ListUserAction"
+            type="com.ubipass.middleware.web.action.ListUsersAction">
+            <forward name="List" path="/users/ListUser.jsp"/>
+            <forward name="delete" path="/users/DeleteUser.jsp"/>
+        </action>
+
+        <action path="/DeleteUserAction"
+            scope="request"
+            name="DeleteListUserForm"
+            type="com.ubipass.middleware.web.action.DeleteUserAction">
+            <forward name="listdelete" path="/ListUserAction.do?operation=delete" redirect="true"/>
+        </action>
+
+        <action path="/EditUserAction"
+            scope="request"
+            type="com.ubipass.middleware.web.action.EditUserAction">
+            <forward name="edit" path="/users/EditUser.jsp"/>
+            <forward name="add" path="/users/AddUser.jsp"/>
+            <forward name="failure" path="/ListUserAction.do"/>
+        </action>
+
+        <action path="/SaveUserAction"
+            name="SaveUserForm"
+            scope="request"
+            type="com.ubipass.middleware.web.action.SaveUserAction">
+            <forward name="List" path="/ListUserAction.do" redirect="true"/>
+            <forward name="Create" path="/EditUserAction.do?action=create"/>
+        </action>
+
+        <action path="/ExecuteTask"
+            type="com.ubipass.middleware.web.action.ExecuteTaskAction">
+            <forward name="success" path="/ListTaskAction.do" redirect="true"/>
+        </action>
+
+        <action path="/TagPrint"
+            name="TagPrintForm"
+            type="com.ubipass.middleware.web.action.TagPrintAction">
+            <forward name="tagPrint" path="/tag/TagPrint.jsp"/>
+        </action>
+
+    </action-mappings>
+
+    <message-resources parameter="middleware"/>
+
+</struts-config>

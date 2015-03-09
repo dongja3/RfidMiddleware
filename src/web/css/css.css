@@ -1,0 +1,196 @@
+A {
+	FONT: 9pt tahoma, arial, helvetica, sans-serif; COLOR: #336699; TEXT-DECORATION: none 
+}
+
+A:hover {
+	FONT: 9pt tahoma, arial, helvetica, sans-serif; COLOR: #336699; TEXT-DECORATION: underline
+}
+a.submenu{
+	TEXT-DECORATION:none;color:#FFFFFF; font-family:Tahoma;
+}
+
+a:hover.submenu{
+	TEXT-DECORATION:underline;color:#185DAD; font-family:Tahoma;
+}
+
+a.menu{
+	TEXT-DECORATION:none;color:#FFFFFF;font-weight:bold; font-family:Tahoma;
+}
+
+a:hover.menu{
+	TEXT-DECORATION:underline;color:#FF9966;font-weight: bold; font-family:Tahoma;
+}
+
+
+
+BODY {
+	FONT: 9pt tahoma, arial, helvetica, sans-serif; COLOR: #555555; TEXT-DECORATION: none
+}
+P {
+	FONT: 9pt tahoma, arial, helvetica, sans-serif; COLOR: #555555; TEXT-DECORATION: none
+}
+TD {
+	FONT: 9pt tahoma, arial, helvetica, sans-serif; COLOR: #555555; TEXT-DECORATION: none
+}
+.red {
+	COLOR: #FF0000
+}
+.dk-orange {
+	COLOR: #cc6600
+}
+.orange {
+	COLOR: #ff9900
+}
+.yellow {
+	COLOR: #cc9933
+}
+.green {
+	COLOR: #999900
+}
+.lt-blue {
+	COLOR: #6699cc
+}
+.blue {
+	COLOR: #336699
+}
+.purple {
+	COLOR: #663366
+}
+.gray {
+	COLOR: #666666
+}
+.white {
+	COLOR: #ffffff;
+}.whitebold {
+	COLOR: #FFFFFF;font-weight: bold; font-family:Tahoma;font-size:9pt
+}.blace {
+	COLOR: #000000
+}
+.bg-noalert-blue {
+	COLOR: #ffffff; BACKGROUND-COLOR: #009900
+}
+.bg-abovemax-green {
+	COLOR: #ffffff; BACKGROUND-COLOR: #0066cc
+}
+.bg-outofstock-red {
+	COLOR: #ffffff; BACKGROUND-COLOR: #ff0000
+}
+.bg-belowmin-orange {
+	COLOR: #ffffff; BACKGROUND-COLOR: #ff9966
+}
+.bg-darkblue {
+	FONT: bold 12pt "tahoma", "arial", "helvetica", "sans-serif"; COLOR: #ffffff; BACKGROUND-COLOR: #336699
+}
+.bg-main-title-darkblue {
+	FONT: bold italic 12pt "tahoma", "arial", "helvetica", "sans-serif"; COLOR: #ffffff; BACKGROUND-COLOR: #336699
+}
+.bg-shallowegreen {
+	COLOR: #000000; BACKGROUND-COLOR: #EFF7FF
+}
+.bg-title-shallowegreen {
+	COLOR: #000000; BACKGROUND-COLOR: #E1E1E1; FONT: bold 10pt
+}
+.bg-tabletitle {
+	COLOR: #000000; BACKGROUND-COLOR: #DEE7EF
+}
+.field{border:1 solid black;FONT-SIZE: 9pt; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; HEIGHT: 19px; LINE-HEIGHT: normal}
+.buttondark{border-left:1 solid solid; border-right:1 solid solid; border-top:1 solid 1; border-bottom:1 solid #336699; background:#336699; COLOR: #ffffff; FONT-SIZE: 9pt; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; HEIGHT: 19px; LINE-HEIGHT: normal;  }
+.buttonshallow{border-left:0px solid solid; border-right:1px solid #336699; border-top:0px solid 0; border-bottom:1px solid #336699; background:#CECECE; COLOR: #000000; FONT-SIZE: 9pt; FONT-STYLE: normal; FONT-VARIANT: normal; FONT-WEIGHT: normal; HEIGHT: 19px; LINE-HEIGHT: normal; }.title {  font-family: "Arial", "Helvetica", "sans-serif"; font-size: 14pt; font-weight: bold; color: #336699}
+.bg-middle-green {  font-family: "Arial", "Helvetica", "sans-serif"; font-size: 9pt; color: #000000; background-color: #CED7E7}
+
+.accessible{
+   background-color: "#FFFFCC";
+   border:1 solid black;
+   FONT-SIZE: 9pt; 
+   FONT-STYLE: normal; 
+   FONT-VARIANT: normal; 
+   FONT-WEIGHT: bold; 
+   HEIGHT: 19px; 
+   LINE-HEIGHT: normal
+}
+
+
+
+
+.section {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; color: #333333; font-weight: bold}
+.bodyhdr {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #FF6600}
+.bodytxt {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; line-height: 100%; color: #333333; font-weight: normal}
+.white{
+	COLOR: #FFFFFF
+}
+
+.bg-gray {
+	 font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold;COLOR: #000000; BACKGROUND-COLOR: #DBEAF5
+}
+
+.bg-shallow {
+	 font-family: Verdana, Arial, Helvetica, sans-serif; line-height: 22px;font-size: 14px;COLOR:#333333; BACKGROUND-COLOR: #F9F9F9
+}
+.bg-shallow1 {
+	 font-family: Verdana, Arial, Helvetica, sans-serif;line-height: 22px; font-size: 14px;COLOR:#333333; BACKGROUND-COLOR: #d9d9d9
+}
+td{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; line-height: 100%; color: #333333; font-weight: normal}
+
+.foot-bgcolor{
+	color: #CCCCCC;
+}
+.outborder{
+BACKGROUND-COLOR: #8c8c8c
+}
+
+
+
+.sf {
+	COLOR: #fff
+}
+.sf A {
+	COLOR: #fffFFF
+}
+
+.sfm {
+	BORDER-BOTTOM: #5aa8da 1px solid
+}
+
+.sfr {
+	BORDER-BOTTOM: #5aa8da 1px solid
+}
+.sft {
+	BORDER-BOTTOM: #AFAFAF 2px solid;BACKGROUND-COLOR:#4292C6
+}
+.tabtable A {
+	TEXT-DECORATION: none
+}
+.tabtable A:hover {
+	TEXT-DECORATION: none
+}
+.tabspace {
+	FONT-SIZE: 1pt
+}
+
+.tab {
+	BORDER-RIGHT: #004e82 1px solid
+}
+.tabsel {
+	BORDER-RIGHT: #004e82 1px solid
+}
+.tab {
+	BORDER-LEFT: #4791c5 1px solid
+}
+.tab {
+	BORDER-TOP: #4791c5 1px solid
+}
+.tabsel {
+	BORDER-TOP: #a2d8e9 1px solid
+}
+.tabsel {
+	BORDER-LEFT: #a2d8e9 1px solid
+}
+.tabsel {
+	BACKGROUND: #4292C6
+}
+.hand {
+ font-size:.5in
+}
+a.link2:link { color: #FF0000; text-decoration: underline}
+a.link2:visited { color: #FF0000; text-decoration: underline}
+a.link2:hover { color: #FF0000; text-decoration: none; background-color: #FFFFFF}

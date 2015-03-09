@@ -1,0 +1,141 @@
+<!-- build file for AutoID Middleware project -->
+
+<project name="middleware" default="build" basedir=".">
+    <!-- change value of java.dir and tomcat.dir according to
+             real installation path of JDK1.5 and Tomcat on local machine -->
+
+    <property name="java.dir" value="C:\Program Files\Java\jdk1.5.0_03"/>
+    <property name="tomcat.dir" value="C:\Tomcat 5.5"/>
+
+
+    <property name="middleware.dir" value="${tomcat.dir}/webapps/middleware"/>
+    <property name="src.dir" value="src"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="dest.dir" value="classes"/>
+    <property name="web.dir" value="${src.dir}/web"/>
+    <property name="jar.file" value="middleware.jar"/>
+    <property name="middleware.warfile" value="middleware.war"/>
+
+    <property name="jdbc.file" value="mysql-connector.jar,postgresql-jdbc.jar,sapdbc.jar,msbase.jar,mssqlserver.jar,msutil.jar,ojdbc.jar"/>
+
+    <!-- define class path -->
+    <path id="class.path">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+
+        <fileset dir="${tomcat.dir}/common/lib">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="build" depends="middleware-war"/>
+
+    <!-- create dest.dir and directories under Tomcat -->
+    <target name="mkdir">
+        <mkdir dir="${dest.dir}"/>
+
+        <mkdir dir="${middleware.dir}"/>
+        <mkdir dir="${middleware.dir}/WEB-INF"/>
+        <mkdir dir="${middleware.dir}/WEB-INF/lib"/>
+        <mkdir dir="${middleware.dir}/conf"/>
+        <mkdir dir="${middleware.dir}/logs"/>
+    </target>
+
+    <!-- compile java files -->
+    <target name="compile">
+        <javac srcdir="${src.dir}/java" destdir="${dest.dir}" encoding="UTF-8" deprecation="on">
+            <classpath refid="class.path"/>
+            <compilerarg value="-Xlint:all,-serial"/>
+        </javac>
+    </target>
+
+    <!-- copy files to tomcat dir -->
+    <target name="copy">
+        <!-- copy server.xml -->
+        <copy tofile="${tomcat.dir}/conf/server.xml.bak" file="${tomcat.dir}/conf/server.xml" failonerror="false"/>
+        <copy tofile="${tomcat.dir}/conf/server.xml" file="${src.dir}/conf/server.xml"/>
+
+        <!-- copy web.xml -->
+        <copy todir="${middleware.dir}/WEB-INF" file="${src.dir}/conf/web.xml"/>
+
+        <!-- copy struts-config.xml -->
+        <copy todir="${middleware.dir}/WEB-INF" file="${src.dir}/conf/struts-config.xml"/>
+
+        <!-- copy struts-html.tld> -->
+        <copy todir="${middleware.dir}/WEB-INF" file="${src.dir}/conf/struts-html.tld"/>
+
+        <!-- copy log4j configuration file -->
+        <copy todir="${middleware.dir}/conf" file="${src.dir}/conf/systemlog.properties"/>
+
+        <!-- copy JDBC driver libraries -->
+        <copy todir="${tomcat.dir}/common/lib">
+            <fileset dir="${lib.dir}" includes="${jdbc.file}"/>
+        </copy>
+
+        <!-- copy other libraries -->
+        <copy todir="${middleware.dir}/WEB-INF/lib">
+            <fileset dir="${lib.dir}" excludes="${jdbc.file}"/>
+        </copy>
+
+        <!-- copy web files excluding resources -->
+        <copy todir="${middleware.dir}">
+            <fileset dir="${web.dir}" excludes="resources/**"/>
+        </copy>
+
+        <!-- copy resource files to WEB-INF/classes -->
+        <copy todir="${dest.dir}">
+            <fileset dir="${web.dir}/resources" includes="**/*.properties"/>
+        </copy>
+
+    	<!-- copy licence configuration file -->
+    	<copy todir="${middleware.dir}/conf" file="${src.dir}/conf/licence.properties"/>
+    </target>
+
+    <!-- run native2ascii to convert Chinese properties file -->
+    <target name="native2ascii">
+        <!-- delete old files first -->
+        <delete>
+            <fileset dir="${dest.dir}" includes="*zh.properties"/>
+        </delete>
+
+        <native2ascii encoding="UTF-8" src="${web.dir}/resources" dest="${dest.dir}"
+            includes="**/*zh.properties"/>
+    </target>
+
+    <!-- generate middleware.jar -->
+    <target name="jar" depends="compile, copy, native2ascii">
+        <jar destfile="${jar.file}" basedir="${dest.dir}"/>
+        <copy todir="${middleware.dir}/WEB-INF/lib" file="${jar.file}"/>
+    </target>
+
+    <!-- build middleware.war -->
+    <target name="middleware-war" depends="jar">
+        <war destfile="${middleware.warfile}"
+            basedir="${middleware.dir}" excludes="logs/*.log"
+            webxml="${middleware.dir}/WEB-INF/web.xml">
+            <!-- include empty logs directory -->
+            <include name="**/*"/>
+            <include name="logs"/>
+        </war>
+    </target>
+
+    <!-- clean up -->
+    <target name="clean">
+        <!-- remove files of middleware in Tomcat -->
+        <delete>
+            <fileset dir="${middleware.dir}" includes="**"/>
+        </delete>
+
+        <!-- remove class files -->
+        <delete>
+            <fileset dir="${dest.dir}" includes="**"/>
+        </delete>
+
+        <!-- remove jar file -->
+        <delete file="${jar.file}"/>
+
+        <!-- remove war file -->
+        <delete file="${middleware.warfile}"/>
+    </target>
+</project>

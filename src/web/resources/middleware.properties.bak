@@ -1,0 +1,454 @@
+#-----------login page-----------
+
+login.title          = Welcome to Ubipass Auto-ID Middleware
+login.username       = Username
+login.password       = Password
+login.login          = Login
+login.changepassword = ChangePassword
+login.copyright      = Copyright Ubipass corp.
+logout               = Logout
+top.changePassword   = Change Password
+login.middlewareName = Middleware Login
+login.reset          = Reset
+logout.thank=Thank you for using Auto-ID Middleware
+logout.gotologin=Return to Login page
+login.errorusername.password = Wrong user name or password
+javascript.login.username.isempty = Please input user name
+javascript.login.password.isempty = Please input password
+javascript.changepassword.prompt.save = Do you want to change password?
+
+#--------------- menu -----------------
+menu.server		= Server
+menu.server.sysconfig = System Configuration
+menu.server.httpcommandreply = HTTP Command Interface
+menu.server.licesekeymanagement = License Key Management
+
+menu.device		= Device
+menu.device.device	= Device
+menu.device.devicegroup	= Device Group
+
+menu.user = User
+menu.user.user = User
+menu.user.changepassword = Change Password
+
+menu.task		= Task
+menu.task.task		= Task
+menu.top.logout		= Logout
+
+#---------------change password page ------
+changepassword.title     = Change Password
+changepassword.username  = Username
+changepassword.oldPassword  = Old Password
+changepassword.newPassword  = New Password
+changepassword.rePassword   = Confirm Password
+changePassword.failure = Change password failed
+changepassword.user = Change Password for
+
+fail.changepassword.password.length = Password should be more than 6 characters
+fail.changepassword.password.match = New password and cofirm password are not identical
+fail.changepassword.oldpassword.wrong = Old password does not match
+success.changepassword = Password change succeeded
+
+#-------------- public Form Element Button ------
+form.savedata   = Save
+form.updatedata = Update
+form.delete     = Delete
+form.reset      = Reset
+form.Change     = Change
+form.Next    = Next
+form.Back=Back
+form.GroupActions=Group Actions:
+form.AvailableActions=--Available Actions--
+form.Write=Print
+form.checlbox.unselect =Please select at least one item
+form.notselect=Please select at least one item
+form.sureDelete=Do you want to delete the destination?
+
+#------------ public link element ------------
+link.delete = Delete
+link.select = Show
+link.update = Update
+
+# login image
+login.bgimage=English\/login_en.gif
+top.bgimage  =English\/logo_en.gif
+
+#----------user---------
+user.ListUser	= List User
+user.CreateUser	= Add User
+user.DeleteUser	= Delete User
+user.UserName	= User Name
+user.RoleType	= Role
+user.DistributeReaders	= Assign Devices
+user.ReaderGroup		= Device Group
+user.Selected			= Selected
+user.UnSelected=Unselected
+user.EditingUser=Edit User
+user.Password=Password
+user.rePassword=Confirm password
+
+role.Administrator=Administrator
+role.ExternalUser=ExternalUser
+role.Operator=Operator
+role.Viewer=Viewer
+
+username.existe = User name has existed
+
+#-----------field name-------
+Name=UserName
+Description=Description
+Role=Role
+Operate=Operate
+State=Status
+
+#-------------JS-------------
+js.AddUser.userNameNotWhite=User name cannot contain space
+js.AddUser.pswNotWhite=Password cannot contain space
+js.AddUser.userNameNotSpace=Input user name
+js.AddUser.userNameNotLegalityCharacter=User name incorrect\\n User name should only contain such characters(a-z,A-X,0-9 ._-).
+js.AddUser.pswNotLegalityCharacter=Password incorrect\\n Password should only contain such characters(a-z,A-X,0-9 ._-).
+js.AddUser.PswNotAlseUserName= User name and password should be different
+js.AddUser.pswNotAlso=Confirm Password doesn't match New Password
+js.AddUser.pswLength= Password should be more than 6 characters
+js.userdelete=Do you want to delete the user?
+js.usersave=Do you want to save the user?
+
+error.record.notexist =The record does not exist
+
+#----------detail log file------
+error.detail = <h3>Error Message:</h3>{0}
+error.message= Operation Error
+
+#-------------Task-----------------------
+task.EditingTask=Edit Task
+task.ListTask=List Task
+task.CreateTask=Add Task
+task.DeleteTask=Delete Task
+task.TaskInformation=Task Information
+task.taskName=Task Name
+task.Startup=Startup
+task.TaskType=Task Type
+task.TriggerMode=Trigger Mode
+task.Parameter=Parameter
+task.TimingPeriod=Timing Period
+task.IdlePeriod=Idle Period(s)
+task.ReadNumber=Read Number
+task.EncodingScheme=Encoding Scheme
+task.Description=Description
+task.formattype=PML Format Type
+task.command=Command
+task.ReaderID=Reader Symbol
+task.TopLevelID=Top Level Symbol
+task.SelectGroup=Select Group
+task.SelectDevice=Select Device
+task.DistributeDevices=Assign Device
+task.formatType.F=Full
+task.formatType.S=Simplified
+task.triggermode.A=Tag Detected
+task.triggermode.R=Tag Removed
+task.triggermode.E=Package By Empty
+task.triggermode.I=Package By Idle
+task.triggermode.N=Package By Number
+task.triggermode.P=Printing
+task.startupType.M=Manual
+task.startupType.A=Automatic
+task.taskType.M=Manual
+task.taskType.A=Automatic
+task.startPacking=Task starting ...
+task.stopPacking=Task stopping ...
+task.manualPacking=Manual packaging starting ...
+task.add=Add
+task.del=Delete
+
+task.httpDestination = Http Destination
+task.fileDestination = File Destination
+
+task.http.ip = IP
+task.http.port = Port
+task.http.path = Path
+task.http.userName = User Name
+task.http.password = Password
+
+task.file.folder = Folder
+
+task.js.maxDestinationSize=Cannot add a new destination, the maximum count is 10.
+task.js.destinationSizeLessThanOne=No destination is defined, please add a destination
+task.js.tasktypeismanual=Task should only contain one and only one device
+task.js.inputParameter=Parameter is empty
+task.js.inputnumber=Parameter should be a positive integer
+task.js.notzero=Parameter should be greater than 0
+task.js.deviceEmpty=No device assign to Task
+
+task.js.taskNameNotEmpty=Task name is empty
+task.js.selectedGroup=Please select a device
+task.js.noisip=Incorrect IP address
+task.js.notspace=Input box is empty
+task.js.portNoEmpty=Port number is empty
+task.js.errorpath=Path format error
+task.js.doyouwantpackage=Do you want to start packaging?
+task.js.doyouwantstart=Do you want to start the task
+task.js.doyouwantstop=Do you want to stop the task
+task.js.starttask=Start Task
+task.js.stoptask=Stop Task
+task.js.deletetask=Do you want to delete the task(s)?
+task.js.savetask=Do you want to save the task?
+task.js.manualpascking=Manual Packaging
+task.js.alertstartdevice=Device {0} is not running, go to List Device page to start it
+
+error.nofound.devicegroup = No device group found, please create one first
+error.nofound.device = No device found, please create one first
+fail.taskName.exist = Task name has existed
+
+#------------------------Device--------------------------------
+addDevice.title          = Add Device
+addDevice.addDevice      = Add Device
+addDevice.deviceName     = Device Name
+addDevice.deviceId       = Device ID
+addDevice.connectType    = Connection Type
+addDevice.deviceType     = Device Type
+addDevice.persistTime    = Persist Time
+addDevice.IP             = IP
+addDevice.port           = Port
+addDevice.username       = Username
+addDevice.password       = Password
+addDevice.startupType    = Startup Type
+addDevice.devicePlugin   = Plugin Type
+addDevice.class          = Plugin Class
+addDevice.command        = Command
+addDevice.description    = Description
+addDevice.editDevice     = Edit Device
+addDevice.addDevice      = Add Device
+addDevice.tcp_ip         = IP
+addDevice.serialPort     = Serial Port
+addDevice.automatic      = Automatic
+addDevice.manual         = Manual
+addDevice.userCustomized = User Customized
+addDevice.serialName     = Serial Port Name
+addDevice.baudRate		 = Baud Rate
+addDevice.UnitOfPersisTime  = (Seconds)
+
+listDevice.title       = List Device
+device.onecell.title   = Device Name
+device.twocell.title   = Device ID
+device.threecell.title = Status
+device.fourcell.title  = Startup Type
+device.fivecell.title  = Device Type
+device.sixcell.title   =  Description
+
+fail.device.change	= The device cannot be changed because it is running
+fail.device.delete	= The device "{0}" cannot be deleted because it is running
+fail.device.assign  = The device "{0}" cannot be deleted because it is used by task
+fail.device.value.exist = The value "{0}" has been used, please change it
+fail.group.assign  = The group "{0}" cannot be deleted because it is used by task
+fail.group.change  = The group cannot be changed because device "{0}" in the group are used by task
+fail.group.save  = The device group cannot be saved because it does not exist
+
+deleteDevice.title = Delete Device
+javascript.device.IPIllegal = IP address or hostname is illegal
+
+device.status.started          = Started
+device.status.stopped          = Stopped
+device.pic.href.title.start    = Start Device
+device.pic.href.title.stop     = Stop Device
+device..text.href.title.edit   = Edit Device
+
+device.action.list      = List Device
+device.action.delete    = Delete Device
+device.action.create    = Add Device
+
+device.button.save      = Save
+
+javascript.device.prompt.save = Do you want to save the device?
+javascript.device.prompt.delete = Do you want to delete the device(s)?
+javascript.device.prompt.start = Do you want to start the device?
+javascript.device.prompt.stop = Do you want to stop the device?
+javascript.device.connectionType.illegal.isNumber = Connection type is not a number
+javascript.device.connectionType.illegal.isEmpty = Connection type is empty
+javascript.device.readerClass.illegal.isEmpty    = Device class is empty
+javascript.device.BaudRate.illegal.isEmpty = Baud Rate is empty
+javascript.device.connectionName.illegal.isempty = Serial Port is empty
+javascript.device.readerName.illegal.isempty     = Device name is empty
+javascript.device.deviceID.illegal.isempty       = Device ID is empty
+javascript.device.ip.illegal.isempty       = IP is empty
+javascript.device.deviceID.illegal		 = Device ID can only contain letters and digits
+javascript.device.port.illegal.isNumber  = Port is not a number
+javascript.device.BaudRate.illegal.isNumber =Baud rate is not a number
+javascript.device.port.illegal.isempty =Port is empty
+javascript.device.persistimeIllegal=Persist Time must be a number and less than 65536
+
+device.stoping		= Device stopping ...
+device.starting		= Device starting ...
+device.ViewTag=View Tag
+device.PrintTag=Print Tag
+device.StartDevice=Start Device
+device.StopDevice=Stop Device
+
+task.packing.start	= Packaging starting ...
+task.packing.stop	= Packaging stopping ...
+package.empty  = Tag list is empty
+
+#------------------------Device Group--------------------------------
+delDeviceGroup.delGroup      = Delete Device Group
+delDeviceGroup.groupName     = Group Name
+delDeviceGroup.description   = Description
+delDeviceGroup.button.delete = Delete
+
+listDeviceGroup.bigtitle     = List Device Group
+listDeviceGroup.description  = Description
+listDeviceGroup.groupname    = Group Name
+
+addDeviceGroup.addGroup      = Add Device Group
+addDeviceGroup.editGroup     = Edit Device Group
+addDeviceGroup.groupName     = Group Name
+addDeviceGroup.description   = Description
+addDeviceGroup.device        = Devices
+addDeviceGroup.unselected    = Unselected
+addDeviceGroup.selected      = Selected
+addDeviceGroup.save          = Save
+
+deviceGroup.action.listDeviceGroup = List Device Group
+deviceGroup.action.addDeviceGroup = Add Device Group
+deviceGroup.action.delDeviceGroup = Delete Device Group
+fail.group.exist = Group name has existed
+javascript.devicegroup.prompt.save = Do you want to save the device group?
+javascript.devicegroup.groupname.illegal.isempty = Group name is empty
+javascript.devicegroup.groupname.illegal         = Group name is illegal
+javascript.devicegroup.selectedDevice.isempty    = Please assign at least one device
+
+#------------------- System config ----------------
+sysconfig.title                  = System Configuration
+sysconfig.middlewareName         = Middleware Name
+sysconfig.queueSize              = Event Queue Size
+sysconfig.soapStartupType        = Soap Startup Type
+sysconfig.messageStartupType     = Message Startup Type
+sysconfig.automatic              = Automatic
+sysconfig.manual                 = Manual
+sysconfig.availability           = Event Queue Size will not take effect until server restarts.
+sysconfig.button.save            = Save
+
+javascript.devicegroup.prompt.delete = Do you want to delete the device group(s)?
+javascript.sysconfig.sysname.valueIllegal = Middleware name is illegal.
+javascript.sysconfig.queuesize.valueIllegal = Event Queue Size should be between 1000 and 10000.
+javascript.sysconfig.prompt.save    = Do you want to save the configuration?
+
+#-------------  List HttpCommandReply  -------------
+listHttpCommandReply.title   = List HTTP Command Interface
+delHttpCommandReply.title    = Delete HTTP Command Interface
+addHttpCommandReply.title    = Add Http Command Interface
+editHttpCommandReply.title   = Edit HTTP Command Interface
+
+listHttpCommandReply.ip     = IP
+listHttpCommandReply.port   = Port
+listHttpCommandReply.username = Username
+listHttpCommandReply.password = Password
+listHttpCommandReply.path     = Path
+
+httpCommandReply.action.list    = List HTTP Command Interface
+httpCommandReply.action.add     = Add HTTP Command Interface
+httpCommandReply.action.del     = Delete HTTP Command Interface
+javascript.httpcommandconfig.path.illegal = Path is illegal
+httpCommandReply.button.save        = Save
+httpCommandReply.button.del         = Delete
+fail.httpcommandreplys.ip.exist  = IP address has exsited
+javascript.httpcommandconfig.ip.illegal = IP wrong format
+javascript.httpcommandconfig.port.illegal = Port is not a number
+javascript.httpcommandconfig.prompt.save = Do you want to save the HTTP command interface?
+javascript.httpcommandconfig.prompt.delete = Do you want to delete the HTTP command interface(s)?
+
+#------------- Licence key Management  -------------
+LicenceMgt.title   =  License Key Management
+LicenceMgt.hardwareKey = Hardware Key
+LicenceMgt.expiryDate = Expiration Date
+LicenceMgt.userName = User Name
+LicenceMgt.key = Licence Key
+LicenceMgt.error = Wrong UserName or LicenceKey 
+javascript.LicenceMgt.userName.valueIllegal = User name is empty
+javascript.LicenceMgt.licenceKey.valueIllegal =  Licence key is empty
+javascript.LicenceMgt.prompt.save    = Do you want to save the licence key?
+
+#------------------viewEPC.jsp --------------------
+viewEPC.title		= View Tag
+viewEPC.deviceID    = Device ID
+viewEPC.deviceName 	= Device Name
+viewEPC.viewTime    = View Time
+viewEPC.ReadTime    = Read Time
+viewEPC.TagID       = Tag ID
+viewEPC.Number   	= Number
+viewEPC.deviceNotRuning=Device is stopped
+viewEPC.notFound=No tag found
+
+#------------------TagList.jsp --------------------
+tagList.title=Manual Packaging
+tagList.Packing=Packaging
+tagList.firsttime = View Time
+tagList.readtime = Read Time
+
+refresh = Refresh
+pack = Pack
+close = Close
+clear = Clear
+javascript.close = Do you want to close the window?
+javascript.clear = Do you want to clear the tag list?
+
+#---------------------Monitor Devices-----------------
+monitorDevice.title			  = Monitor Device
+javascript.closeMonitorDevice = Do you want to close the window?
+
+#------------------Writetag.jsp--------------------
+writetag.writelabel=Printed Label
+writetag.startTagid=Tag ID
+writetag.count=Count
+writetag.inputerror=Tag ID should be hexadecimal.
+writetag.counterror=Count should be greater than 0
+writetag.title=Print Tag
+writetag.succeed=Written and validated successfully
+writetag.failed= Failed to be validated
+writetag.CountIsZero = Count is zero, cannot print any tag
+writetag.CountIsNotNum = Count is not a number
+writetag.OutofMax = The maximum count should be less than 10000
+writetag.EPCError.hex = TagID should only be composed of hex number [0~F]
+writetag.EPCError.dec = TagID should only be composed of decimal number [0~9]
+writetag.EPCError.empty = 标签号码不能为空
+writetag.printingTag = Next Tag
+writetag.printingLabel = Next Label
+writetag.algorithm = Numbering
+writetag.algorithm.hex = Hexadecimal
+writetag.algorithm.dec = Decimal
+writetag.increment = Increment
+writetag. =
+writetag.increment.yes = Yes
+writetag.increment.no = No
+writetag.printedNumber = Printed Tag Number:
+writetag.itemPrint = Item Print
+writetag.batchPrint = Batch Print
+
+writetag.js.batchPrint = Do you want to start batch print?
+writetag.batchPrint.innerHtml = Tag is Printing...
+
+#------------------------header.jsp--------------------------------
+topLevel.server = Server
+oneLevel.server = System Configuration
+twoLevel.server =  HTTP Command Interface
+threeLevel.server = License Key Mangement
+
+topLevel.device = Device
+oneLevel.device = Device
+twoLevel.device = Device Group
+      
+toplevel.user   = User
+oneLevel.user   = User
+twoLevel.user   = Change Password
+
+topLevel.task   = Task
+onelevel.task   = Task
+
+Doyouwantlogout=Do you want to logout?
+logout.prompt = Do you want to logout?
+
+#------------------------foot.jsp--------------------------------
+foot.versionNumber=Version
+foot.buildNumber=Build
+
+# authorization error
+noauthorization.error = User is not authorized for this operation
+noauthorization.error.title = No Authorization

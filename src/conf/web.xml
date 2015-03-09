@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>AutoID Middleware</display-name>
+
+    <filter>
+        <filter-name>Set Character Encoding</filter-name>
+        <filter-class>com.ubipass.middleware.web.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Set Character Encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Main Servlet -->
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.ubipass.middleware.web.MainServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GetTagListServlet</servlet-name>
+        <servlet-class>com.ubipass.middleware.web.GetTagListServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>MonitorDeviceServlet</servlet-name>
+        <servlet-class>com.ubipass.middleware.web.MonitorDeviceServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- Struts servlet -->
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>5</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>5</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- HTTP Command servlet-->
+    <servlet>
+        <servlet-name>printtag</servlet-name>
+        <servlet-class>com.ubipass.middleware.web.PrintTagServlet</servlet-class>
+    </servlet>
+
+    <!-- HTTP request content logged in system logger -->
+    <servlet>
+        <servlet-name>systemlogger</servlet-name>
+        <servlet-class>com.ubipass.middleware.web.SystemLoggerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>systemlogger</servlet-name>
+        <url-pattern>/systemlogger</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>printtag</servlet-name>
+        <url-pattern>/printtag</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetTagListServlet</servlet-name>
+        <url-pattern>/GetTagListServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>MonitorDeviceServlet</servlet-name>
+        <url-pattern>/MonitorDeviceServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- configure session timeout -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>cm_error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>cm_error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>cm_error.jsp</location>
+    </error-page>
+
+    <!-- Struts Tag Library Descriptors -->
+    <taglib>
+        <taglib-uri>/tags/struts-html</taglib-uri>
+        <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+    </taglib>
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/middlewareDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>administrator permission</web-resource-name>
+            <url-pattern>/LogOutAction.do</url-pattern>
+            <url-pattern>/ChangePasswordAction.do</url-pattern>
+            <url-pattern>/ListDeviceGroupsAction.do</url-pattern>
+            <url-pattern>/AddDeviceGroupAction.do</url-pattern>
+            <url-pattern>/SaveDeviceGroupsAction.do</url-pattern>
+            <url-pattern>/DeleteDeviceGroupsAction.do</url-pattern>
+            <url-pattern>/ListDevicesAction.do</url-pattern>
+            <url-pattern>/AddDevicesAction.do</url-pattern>
+            <url-pattern>/SaveDevicesAction.do</url-pattern>
+            <url-pattern>/DeleteDevicesAction.do</url-pattern>
+            <url-pattern>/ExecuteDevice.do</url-pattern>
+            <url-pattern>/SysConfigAction.do</url-pattern>
+            <url-pattern>/SaveSysConfigAction.do</url-pattern>
+            <url-pattern>/ListHttpCommandReplyAction.do</url-pattern>
+            <url-pattern>/AddHttpCommandReplyAction.do</url-pattern>
+            <url-pattern>/SaveHttpCommandReplyAction.do</url-pattern>
+            <url-pattern>/DeleteHttpCommandReplyAction.do</url-pattern>
+            <url-pattern>/LicenceMgt.do</url-pattern>
+            <url-pattern>/SaveLicenceMgtAction.do</url-pattern>
+            <url-pattern>/MonitorDeviceAction.do</url-pattern>
+            <url-pattern>/ViewEPCAction.do</url-pattern>
+            <url-pattern>/PackageAction.do</url-pattern>
+            <url-pattern>/SavePackageAction.do</url-pattern>
+            <url-pattern>/ListTaskAction.do</url-pattern>
+            <url-pattern>/EditTaskAction.do</url-pattern>
+            <url-pattern>/DeleteTaskAction.do</url-pattern>
+            <url-pattern>/SaveTaskAction.do</url-pattern>
+            <url-pattern>/ListUserAction.do</url-pattern>
+            <url-pattern>/DeleteUserAction.do</url-pattern>
+            <url-pattern>/EditUserAction.do</url-pattern>
+            <url-pattern>/SaveUserAction.do</url-pattern>
+            <url-pattern>/ExecuteTask.do</url-pattern>
+            <url-pattern>/TagPrint.do</url-pattern>
+
+            <url-pattern>/error.jsp</url-pattern>
+            <url-pattern>/foot.jsp</url-pattern>
+            <url-pattern>/header.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+
+            <url-pattern>/reader/*</url-pattern>
+            <url-pattern>/reader/ProcessBar.htm</url-pattern>
+            <url-pattern>/reader/CloseMonitor.jsp</url-pattern>
+            <url-pattern>/task/*</url-pattern>
+            <url-pattern>/sysconfig/*</url-pattern>
+            <url-pattern>/tag/*</url-pattern>
+            <url-pattern>/tag/CloseManualPack.jsp</url-pattern>
+            <url-pattern>/tag/CloseWindow.jsp</url-pattern>
+            <url-pattern>/users/*</url-pattern>
+            <url-pattern>/users/ChangePwd.jsp</url-pattern>
+
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>Administrator</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>operator permission</web-resource-name>
+            <url-pattern>/LogOutAction.do</url-pattern>
+            <url-pattern>/ListDevicesAction.do</url-pattern>
+            <url-pattern>/ChangePasswordAction.do</url-pattern>
+            <url-pattern>/ExecuteDevice.do</url-pattern>
+            <url-pattern>/ViewEPCAction.do</url-pattern>
+            <url-pattern>/ListTaskAction.do</url-pattern>
+            <url-pattern>/MonitorDeviceAction.do</url-pattern>
+            <url-pattern>/PackageAction.do</url-pattern>
+            <url-pattern>/SavePackageAction.do</url-pattern>
+            <url-pattern>/ExecuteTask.do</url-pattern>
+            <url-pattern>/TagPrint.do</url-pattern>
+
+            <url-pattern>/error.jsp</url-pattern>
+            <url-pattern>/foot.jsp</url-pattern>
+            <url-pattern>/header.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+
+            <url-pattern>/reader/CloseMonitor.jsp</url-pattern>
+            <url-pattern>/reader/ProcessBar.htm</url-pattern>
+            <url-pattern>/reader/ViewEPC.jsp</url-pattern>
+            <url-pattern>/reader/MonitorDevice.jsp</url-pattern>
+            <url-pattern>/reader/ListDevices.jsp</url-pattern>
+            <url-pattern>/users/ChangePwd.jsp</url-pattern>
+            <url-pattern>/task/TaskList.jsp</url-pattern>
+            <url-pattern>/tag/*</url-pattern>
+            <url-pattern>/tag/CloseManualPack.jsp</url-pattern>
+            <url-pattern>/tag/CloseWindow.jsp</url-pattern>
+
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>Operator</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>viewer permission</web-resource-name>
+            <url-pattern>/LogOutAction.do</url-pattern>
+            <url-pattern>/ChangePasswordAction.do</url-pattern>
+            <url-pattern>/ListDevicesAction.do</url-pattern>
+            <url-pattern>/ViewEPCAction.do</url-pattern>
+            <url-pattern>/MonitorDeviceAction.do</url-pattern>
+
+            <url-pattern>/error.jsp</url-pattern>
+            <url-pattern>/foot.jsp</url-pattern>
+            <url-pattern>/header.jsp</url-pattern>
+            <url-pattern>/index.jsp</url-pattern>
+
+            <url-pattern>/reader/CloseMonitor.jsp</url-pattern>
+            <url-pattern>/reader/ViewEPC.jsp</url-pattern>
+            <url-pattern>/reader/ListDevices.jsp</url-pattern>
+            <url-pattern>/reader/MonitorDevice.jsp</url-pattern>
+            <url-pattern>/users/ChangePwd.jsp</url-pattern>
+
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>Viewer</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>externaluser permission</web-resource-name>
+            <url-pattern>/LogOutAction.do</url-pattern>
+
+            <http-method>POST</http-method>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>ExternalUser</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Login configuration uses form-based authentication -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Middleware Form-Based Authentication Area</realm-name>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/loginError.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <security-role>
+        <role-name>Administrator</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>Operator</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>Viewer</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>ExternalUser</role-name>
+    </security-role>
+
+</web-app>
+
